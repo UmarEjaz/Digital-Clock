@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Digital Clock</title>
+</head>
+<body>
+	<div id="clock">
+		<h1>08:10:45 PM</h1>
+	</div>
+
+	<script type="text/javascript">
+		
+		function showTime(){
+			var time = new Date(); //Here we created the object of Date class and stored it in 'time' variable. It will give us the exact current time which is on our laptop/system/machine.
+
+			var hour = time.getHours();
+			var min = time.getMinutes();
+			var sec = time.getSeconds();
+			var am_pm = 'AM';
+
+			if (hour > 12){
+				hour = hour - 12;
+				am_pm = 'PM';
+			}
+
+			if (hour == 0){
+				hour = 12;
+			}
+
+			hour = (hour<10) ? '0' + hour : hour;
+			min = (min<10) ? '0' + min : min;
+			sec = (sec<10) ? '0' + sec : sec;
+
+			var currentTime = hour + ':' + min + ':' + sec + ' ' + am_pm;
+			document.getElementById('clock').innerHTML = currentTime;
+
+			//setTimeout(showTime,1000);	//1000 milliseconds = 1 sec. ' setTimeout(function,milliseconds) ' executes the function after waiting a specified number of milliseconds.
+
+					//OR
+
+			setInterval(showTime,1000);		//'setInterval(function,milliseconds)' Same as setTimeout(), but repeats the execution of the function continuously. 
+		}
+
+		showTime();	//showTime() function is called here. Once it will be called to execute, the setTimeout function inside the showTime() function will execute it after waiting a specified number of milliseconds. Thank You!
+
+	</script>
+</body>
+</html>
